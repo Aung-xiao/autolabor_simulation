@@ -1,0 +1,12 @@
+<launch>
+  <arg name="global_path_topic" default="/global_path" />
+  <arg name="goal_topic" default="/move_base_simple/goal" />
+  <arg name="odom_topic" default="/odom" />
+  <arg name="frame_id" default="/real_map" />
+  <node pkg="lattice_planner" type="simple_path_planner" name="simple_path_planner" output="screen" >
+    <param name="global_path_topic" value="$(arg global_path_topic)"/>
+    <param name="goal_topic" value="$(arg global_path_topic)"/>
+    <param name="odom_topic" value="$(arg odom_topic)"/>
+    <param name="frame_id" value="$(arg frame_id)"/>
+  </node>
+</launch>
