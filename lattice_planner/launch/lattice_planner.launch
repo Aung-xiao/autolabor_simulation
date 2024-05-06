@@ -109,6 +109,7 @@
     <arg name="goal_topic" value="/move_base_simple/goal" />
     <arg name="odom_topic" value="/odom" />
     <arg name="frame_id" value="/real_map" />
+    <arg name="distance_step" value="3.0" />
   </include>
 
 </launch>
