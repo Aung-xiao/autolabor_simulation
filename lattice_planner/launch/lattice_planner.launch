@@ -112,4 +112,13 @@
     <arg name="distance_step" value="1.0" />
   </include>
 
+  <include file="$(find lattice_planner)/launch/fake_obstacle.launch">
+    <arg name="position_x" value="2.0" />
+    <arg name="position_y" value="3.0" />
+    <arg name="position_z" value="0.0" />
+    <arg name="scale_x" value="1.0" />
+    <arg name="scale_y" value="1.0" />
+    <arg name="scale_z" value="1.0" />
+  </include>
+
 </launch>

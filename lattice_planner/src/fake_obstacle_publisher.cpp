@@ -7,7 +7,15 @@
 int main(int argc, char** argv)
 {
     ros::init(argc, argv, "fake_obstacle_publisher");
-    ros::NodeHandle nh;
+    ros::NodeHandle nh("~");
+    double position_x{},position_y{},position_z{},scale_x{},scale_y{},scale_z{};
+
+    nh.param("position_x", position_x, 1.0);
+    nh.param("position_y", position_y, 1.0);
+    nh.param("position_z", position_z, 1.0);
+    nh.param("scale_x", scale_x, 1.0);
+    nh.param("scale_y", scale_y, 1.0);
+    nh.param("scale_z", scale_z, 1.0);
 
     ros::Publisher marker_pub = nh.advertise<visualization_msgs::MarkerArray>("visualization_marker_array", 1);
 
@@ -23,18 +31,18 @@ int main(int argc, char** argv)
     marker.type = visualization_msgs::Marker::CUBE;
     marker.action = visualization_msgs::Marker::ADD;
 
-    marker.pose.position.x = 1.0; //修改为障碍物的X位置
-    marker.pose.position.y = 1.0; //修改为障碍物的Y位置
-    marker.pose.position.z = 0.5; //修改为障碍物的Z位置
+    marker.pose.position.x = position_x;
+    marker.pose.position.y = position_y;
+    marker.pose.position.z = position_z;
 
     marker.pose.orientation.x = 0.0;
     marker.pose.orientation.y = 0.0;
     marker.pose.orientation.z = 0.0;
     marker.pose.orientation.w = 1.0;
 
-    marker.scale.x = 1.0; //修改为障碍物的宽度
-    marker.scale.y = 1.0; //修改为障碍物的深度
-    marker.scale.z = 1.0; //修改为障碍物的高度
+    marker.scale.x = scale_x;
+    marker.scale.y = scale_y;
+    marker.scale.z = scale_z;
 
     // 设置障碍物的颜色和alpha值（透明度）
     marker.color.r = 1.0;

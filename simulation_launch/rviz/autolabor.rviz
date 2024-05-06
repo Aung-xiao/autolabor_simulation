@@ -6,7 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /MarkerArray1
       Splitter Ratio: 0.5
     Tree Height: 694
   - Class: rviz/Selection
@@ -101,7 +100,7 @@ Visualization Manager:
         Y: 0
         Z: 0
       Pose Color: 255; 85; 255
-      Pose Style: None
+      Pose Style: Arrows
       Queue Size: 10
       Radius: 0.029999999329447746
       Shaft Diameter: 0.10000000149011612
@@ -193,11 +192,27 @@ Visualization Manager:
       Value: true
     - Class: rviz/MarkerArray
       Enabled: true
-      Marker Topic: /visualization_marker_array
+      Marker Topic: /fake_obstacle_publisher/visualization_marker_array
       Name: MarkerArray
       Namespaces:
         fake_obstacle: true
       Queue Size: 100
+      Value: true
+    - Alpha: 1
+      Axes Length: 1
+      Axes Radius: 0.10000000149011612
+      Class: rviz/Pose
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 0.30000001192092896
+      Head Radius: 0.10000000149011612
+      Name: Pose
+      Queue Size: 10
+      Shaft Length: 1
+      Shaft Radius: 0.05000000074505806
+      Shape: Arrow
+      Topic: /move_base_simple/goal
+      Unreliable: false
       Value: true
   Enabled: true
   Global Options:
@@ -227,7 +242,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 10.940144538879395
+      Distance: 13.723318099975586
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -243,9 +258,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7047967910766602
+      Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
-      Yaw: 0.057232581079006195
+      Yaw: 4.71722936630249
     Saved: ~
 Window Geometry:
   Displays:
@@ -264,4 +279,4 @@ Window Geometry:
     collapsed: true
   Width: 1853
   X: 381
-  Y: 340
+  Y: 266
