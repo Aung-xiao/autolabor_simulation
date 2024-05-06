@@ -6,6 +6,8 @@
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <cmath> // Add this for std::hypot
+#include <tf/transform_broadcaster.h>
+#include <tf/transform_datatypes.h>
 
 class SimplePathPlanner
 {
@@ -33,6 +35,15 @@ public:
         return std::hypot(p1.pose.position.x - p2.pose.position.x, p1.pose.position.y - p2.pose.position.y);
     }
 
+    // return the quaternion between two points
+    geometry_msgs::Quaternion getDirection(const geometry_msgs::PoseStamped &current, const geometry_msgs::PoseStamped &next)
+    {
+        double dx = next.pose.position.x - current.pose.position.x;
+        double dy = next.pose.position.y - current.pose.position.y;
+        double yaw = atan2(dy, dx);
+        return tf::createQuaternionMsgFromYaw(yaw);
+    }
+
     void goalCallback(const geometry_msgs::PoseStamped::ConstPtr& goal_msg)
     {
         target_goal = *goal_msg;
@@ -52,23 +63,35 @@ public:
             return;
 
         double total_distance = getEuclideanDistance(current_pose, target_goal);
-        int num_intermediate_points = std::floor(total_distance/distance_step);
+        int num_intermediate_points = std::floor(total_distance / distance_step);
 
         global_path.poses.clear();
         global_path.poses.push_back(current_pose);
 
+        geometry_msgs::PoseStamped last_pose = current_pose;
+
         for(int i = 1; i <= num_intermediate_points; i++){
             double t = i * distance_step / total_distance;
+            if(t > 1.0) {
+                break; // Prevents overshooting the target goal
+            }
+
             geometry_msgs::PoseStamped intermediate;
             intermediate.header.frame_id = frame_id;
             intermediate.header.stamp = ros::Time::now();
             intermediate.pose.position.x = (1 - t) * current_pose.pose.position.x + t * target_goal.pose.position.x;
             intermediate.pose.position.y = (1 - t) * current_pose.pose.position.y + t * target_goal.pose.position.y;
-            // For simplicity, we'll interpolate linearly.
+
+            // Set orientation from the last pose to the current intermediate pose
+            intermediate.pose.orientation = getDirection(last_pose, intermediate);
+
             global_path.poses.push_back(intermediate);
+            last_pose = intermediate; // Update last_pose for the next iteration
         }
 
+        // Add the target goal as the last pose with its original orientation
         global_path.poses.push_back(target_goal);
+
         global_path.header.stamp = ros::Time::now();
         path_pub.publish(global_path);
     }
