@@ -26,7 +26,7 @@
 
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find simulation_launch)/rviz/autolabor.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find lattice_planner)/config/autolabor.rviz" />
 
 
   <node pkg="map_server" type="map_server" name="map_server" args="$(find simulation_launch)/map/blank.yaml" >
@@ -113,12 +113,12 @@
   </include>
 
   <include file="$(find lattice_planner)/launch/fake_obstacle.launch">
-    <arg name="position_x" value="2.0" />
-    <arg name="position_y" value="3.0" />
+    <arg name="position_x" value="1.0" />
+    <arg name="position_y" value="1.0" />
     <arg name="position_z" value="0.0" />
-    <arg name="scale_x" value="1.0" />
-    <arg name="scale_y" value="1.0" />
-    <arg name="scale_z" value="1.0" />
+    <arg name="scale_x" value="0.5" />
+    <arg name="scale_y" value="0.5" />
+    <arg name="scale_z" value="0.3" />
   </include>
 
 </launch>
