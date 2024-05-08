@@ -163,7 +163,7 @@
       <param name="use_gui" value="$(arg gui)" />
 
       <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-      <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+      <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
       <node name="rviz" pkg="rviz" type="rviz" args="-d $(find simulation_launch_local)/rviz/lidar_sim.rviz" />
     </launch>
 
