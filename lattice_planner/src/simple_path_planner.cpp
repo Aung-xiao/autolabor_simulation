@@ -31,12 +31,12 @@ public:
     }
 
     // Add this helper function to return the Euclidean distance between two points
-    double getEuclideanDistance(const geometry_msgs::PoseStamped& p1, const geometry_msgs::PoseStamped& p2) {
+    static double getEuclideanDistance(const geometry_msgs::PoseStamped& p1, const geometry_msgs::PoseStamped& p2) {
         return std::hypot(p1.pose.position.x - p2.pose.position.x, p1.pose.position.y - p2.pose.position.y);
     }
 
     // return the quaternion between two points
-    geometry_msgs::Quaternion getDirection(const geometry_msgs::PoseStamped &current, const geometry_msgs::PoseStamped &next)
+    static geometry_msgs::Quaternion getDirection(const geometry_msgs::PoseStamped &current, const geometry_msgs::PoseStamped &next)
     {
         double dx = next.pose.position.x - current.pose.position.x;
         double dy = next.pose.position.y - current.pose.position.y;
@@ -47,14 +47,19 @@ public:
     void goalCallback(const geometry_msgs::PoseStamped::ConstPtr& goal_msg)
     {
         target_goal = *goal_msg;
-        publishPath();
+        path_published = false; // 设置为false以便于publishPath函数可以执行
+        // 不用调用 publishPath() 因为将在poseCallback中被调用
     }
 
     void poseCallback(const nav_msgs::Odometry::ConstPtr& odom_msg)
     {
-        current_pose.header.stamp = ros::Time::now();
-        current_pose.pose = odom_msg->pose.pose;
-        publishPath();
+        // 当收到第一个pose信息时或者目标点更新时，发布路径
+        if (!path_published) {
+            current_pose.header.stamp = ros::Time::now();
+            current_pose.pose = odom_msg->pose.pose;
+            publishPath();
+            path_published = true; // 确保路径只会发布一次直到下一个目标点被接收
+        }
     }
 
     void publishPath()
@@ -96,6 +101,8 @@ public:
         path_pub.publish(global_path);
     }
 
+    bool path_published{false}; // 添加一个成员变量用来记录路径是否已经发布过
+
 private:
     ros::NodeHandle nh;
     ros::Publisher path_pub;
@@ -112,6 +119,7 @@ int main(int argc, char** argv)
 {
     ros::init(argc, argv, "simple_path_planner");
     SimplePathPlanner spp;
+    spp.path_published = false; // 初始化时路径设为未发布
     ros::spin();
     return 0;
 }
