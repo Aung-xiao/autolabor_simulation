@@ -5,7 +5,7 @@
 #include <nav_msgs/Path.h>
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/PoseStamped.h>
-#include <cmath> // Add this for std::hypot
+#include <cmath>
 #include <tf/transform_broadcaster.h>
 #include <tf/transform_datatypes.h>
 
@@ -16,7 +16,7 @@ public:
     {
         // Get the global path topic name from parameter server if provided
         nh.param("global_path_topic", global_path_topic, global_path_topic);
-        nh.param("goal_topice", goal_topic, goal_topic);
+        nh.param("goal_topic", goal_topic, goal_topic);
         nh.param("odom_topic", odom_topic, odom_topic);
         nh.param("frame_id", frame_id, frame_id);
         nh.param("distance_step", distance_step, distance_step);
