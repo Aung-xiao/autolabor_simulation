@@ -22,7 +22,7 @@ int main(int argc, char** argv)
     visualization_msgs::MarkerArray markerArray;
     visualization_msgs::Marker marker;
 
-    marker.header.frame_id = "real_map";
+    marker.header.frame_id = "map";
     marker.header.stamp = ros::Time::now();
 
     marker.ns = "fake_obstacle";

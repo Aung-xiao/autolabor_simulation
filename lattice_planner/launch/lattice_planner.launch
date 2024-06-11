@@ -84,13 +84,7 @@
     <param name="temporalUpdate" value="-1.0"/>
     <param name="resampleThreshold" value="0.5"/>
     <param name="particles" value="80"/>
-  <!--
-    <param name="xmin" value="-50.0"/>
-    <param name="ymin" value="-50.0"/>
-    <param name="xmax" value="50.0"/>
-    <param name="ymax" value="50.0"/>
-  make the starting size small for the benefit of the Android client's memory...
-  -->
+
     <param name="xmin" value="-5.0"/>
     <param name="ymin" value="-5.0"/>
     <param name="xmax" value="5.0"/>
@@ -113,12 +107,14 @@
   </include>
 
   <include file="$(find lattice_planner)/launch/fake_obstacle.launch">
-    <arg name="position_x" value="5.0" />
+    <arg name="position_x" value="4.0" />
     <arg name="position_y" value="0.0" />
     <arg name="position_z" value="0.0" />
     <arg name="scale_x" value="0.8" />
     <arg name="scale_y" value="0.8" />
     <arg name="scale_z" value="0.8" />
   </include>
+
+  <include file="$(find lattice_planner)/launch/matlab_core.launch"/>
 
 </launch>
