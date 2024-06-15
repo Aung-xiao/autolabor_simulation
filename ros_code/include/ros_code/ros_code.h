@@ -197,6 +197,16 @@ extern "C" {
 
 }
 #endif
+// 定义一个结构体，用来存储不同分类的参数数组
+struct Params {
+    XmlRpc::XmlRpcValue sample_param;
+    XmlRpc::XmlRpcValue reduce_param;
+    XmlRpc::XmlRpcValue path_cost_param;
+    XmlRpc::XmlRpcValue constraint_param;
+    XmlRpc::XmlRpcValue MPC_cost_param;
+};
+
+void getParamsFromServer(ros::NodeHandle& nh, Params& params);
 
 //-
 //  The generated code includes comments that allow you to trace directly

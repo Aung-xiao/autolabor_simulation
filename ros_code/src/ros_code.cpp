@@ -189,6 +189,45 @@ void ros_code_step(void)
   rate_scheduler();
 }
 
+void getParamsFromServer(ros::NodeHandle& nh, Params& params) {
+    // 使用map容器来简化参数分类和获取逻辑
+    std::map<std::string, std::vector<std::string>> paramCategories = {
+            {"sample_param", {"T_max", "T_min", "t_step", "L_max", "L_min", "l_step", "ds_max", "ds_min", "ds_step", "predict_state_tolerance", "planning_end_distance", "start_plan_s"}},
+            {"reduce_param", {"vehicle_length", "vehicle_width", "dds_threshold", "dls_threshold", "max_object_distance", "expansion_coeff"}},
+            {"path_cost_param", {"ds_cost", "l_cost", "t_cost", "object_cost", "dds_cost", "ddls_cost"}},
+            {"constraint_param", {"v_min", "v_max", "w_min", "w_max", "Delta_v_min", "Delta_v_max", "Delta_w_min", "Delta_w_max", "epsilon_max"}},
+            {"MPC_cost_param", {"ex_stage_cost", "ey_stage_cost", "etheta_stage_cost", "ex_end_cost", "ey_end_cost", "etheta_end_cost", "delta_u_cost", "delta_w_cost", "epsilon_cost"}}
+    };
+
+    // 遍历map获取参数
+    for (const auto& category : paramCategories) {
+        XmlRpc::XmlRpcValue* currentParamCategory;
+        if (category.first == "sample_param") {
+            currentParamCategory = &params.sample_param;
+        } else if (category.first == "reduce_param") {
+            currentParamCategory = &params.reduce_param;
+        } else if (category.first == "path_cost_param") {
+            currentParamCategory = &params.path_cost_param;
+        } else if (category.first == "constraint_param") {
+            currentParamCategory = &params.constraint_param;
+        } else if (category.first == "MPC_cost_param") {
+            currentParamCategory = &params.MPC_cost_param;
+        } else {
+            ROS_WARN("Unknown parameter category: %s", category.first.c_str());
+            continue;
+        }
+
+        for (const std::string& paramName : category.second) {
+            XmlRpc::XmlRpcValue value;
+            if (nh.getParam("ros_code/" + paramName, value)) {
+                (*currentParamCategory)[paramName] = value;
+            } else {
+                ROS_WARN("Failed to get parameter: %s from category %s", paramName.c_str(), category.first.c_str());
+            }
+        }
+    }
+}
+
 // Model initialize function
 void ros_code_initialize(void)
 {
@@ -212,6 +251,39 @@ void ros_code_initialize(void)
   rtsiSetSolverName(&ros_code_M->solverInfo,"FixedStepDiscrete");
   rtmSetTPtr(ros_code_M, &ros_code_M->Timing.tArray[0]);
   ros_code_M->Timing.stepSize0 = 0.01;
+
+  Params params;
+  getParamsFromServer(*SLROSNodePtr, params);
+
+  // 定义键的列表
+  std::vector<std::string> sample_keys = {"T_max", "T_min", "t_step", "L_max", "L_min", "l_step", "ds_max", "ds_min", "ds_step", "predict_state_tolerance", "planning_end_distance", "start_plan_s"};
+  std::vector<std::string> reduce_keys = {"vehicle_length", "vehicle_width", "dds_threshold", "dls_threshold", "max_object_distance", "expansion_coeff"};
+  std::vector<std::string> path_cost_keys = {"ds_cost", "l_cost", "t_cost", "object_cost", "dds_cost", "ddls_cost"};
+  std::vector<std::string> constraint_keys = {"v_min", "v_max", "w_min", "w_max", "Delta_v_min", "Delta_v_max", "Delta_w_min", "Delta_w_max", "epsilon_max"};
+  std::vector<std::string> MPC_cost_keys = {"ex_stage_cost", "ey_stage_cost", "etheta_stage_cost", "ex_end_cost", "ey_end_cost", "etheta_end_cost", "delta_u_cost", "delta_w_cost", "epsilon_cost"};
+
+//  ROS_INFO_STREAM("T_max: " << static_cast<double>(sample_keys.size()));
+
+    for (int i = 0; i < sample_keys.size(); i++) {
+        ros_code_P.sample_param[i] = static_cast<double>(params.sample_param[sample_keys[i]]);
+        ROS_INFO_STREAM(sample_keys[i]<<":" << static_cast<double>(ros_code_P.sample_param[i]));
+    }
+    for (int i = 0; i < reduce_keys.size(); i++) {
+        ros_code_P.reduce_param[i] = static_cast<double>(params.reduce_param[reduce_keys[i]]);
+        ROS_INFO_STREAM(reduce_keys[i]<<":" << static_cast<double>(ros_code_P.reduce_param[i]));
+    }
+    for (int i = 0; i < path_cost_keys.size(); i++) {
+        ros_code_P.path_cost_param[i] = static_cast<double>(params.path_cost_param[path_cost_keys[i]]);
+        ROS_INFO_STREAM(path_cost_keys[i]<<":" << static_cast<double>(ros_code_P.path_cost_param[i]));
+    }
+    for (int i = 0; i < constraint_keys.size(); i++) {
+        ros_code_P.constraint_param[i] = static_cast<double>(params.constraint_param[constraint_keys[i]]);
+        ROS_INFO_STREAM(constraint_keys[i]<<":" << static_cast<double>(ros_code_P.constraint_param[i]));
+    }
+    for (int i = 0; i < MPC_cost_keys.size(); i++) {
+        ros_code_P.MPC_cost_param[i] = static_cast<double>(params.MPC_cost_param[MPC_cost_keys[i]]);
+        ROS_INFO_STREAM(MPC_cost_keys[i]<<":" << static_cast<double>(ros_code_P.MPC_cost_param[i]));
+    }
 
   {
     static const char_T tmp_0[8]{ '/', 'c', 'm', 'd', '_', 'v', 'e', 'l' };

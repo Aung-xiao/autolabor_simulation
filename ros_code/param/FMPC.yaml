@@ -1,0 +1,52 @@
+ros_code:
+#  sample_param
+  T_max: 4.0
+  T_min: 2.0
+  t_step: 0.1
+  L_max: 1.5
+  L_min: -1.5
+  l_step: 0.1
+  ds_max: 1.0
+  ds_min: 0.5
+  ds_step: 0.1
+  predict_state_tolerance: 10.0
+  planning_end_distance: 3.0
+  start_plan_s: 0.1
+
+#  reduce_param
+  vehicle_length: 1.0
+  vehicle_width: 0.5
+  dds_threshold: 4.9 # 0.5*9.8
+  dls_threshold: 1.05  #pi/3
+  max_object_distance: 6.0
+  expansion_coeff: 2.0
+
+#  path_cost_param
+  ds_cost: 0.2
+  l_cost: 1.5
+  t_cost: 0.1
+  object_cost: 2.0
+  dds_cost: 1.0
+  ddls_cost: 1.0
+
+#  constraint_param
+  v_min: -1.5
+  v_max: 1.5
+  w_min: -1.0
+  w_max: 1.0
+  Delta_v_min: -0.10
+  Delta_v_max: 0.10
+  Delta_w_min: -0.05
+  Delta_w_max: 0.05
+  epsilon_max: 1.5
+
+#  MPC_cost_param
+  ex_stage_cost: 1.0
+  ey_stage_cost: 1.0
+  etheta_stage_cost: 1.5
+  ex_end_cost: 2.0
+  ey_end_cost: 2.0
+  etheta_end_cost: 3.0
+  delta_u_cost: 1.0
+  delta_w_cost: 1.0
+  epsilon_cost: 10.0

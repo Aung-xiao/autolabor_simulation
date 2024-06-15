@@ -1,4 +1,4 @@
 <launch>
-  <node pkg="ros_code" type="ros_code" name="matlab_ros_code" output="screen" >
-  </node>
+  <rosparam command="load" file="$(find ros_code)/param/FMPC.yaml"/>
+  <node name="ros_code" pkg="ros_code" type="ros_code" output="screen"/>
 </launch>

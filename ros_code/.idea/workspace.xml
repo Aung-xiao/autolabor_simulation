@@ -92,7 +92,7 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "/home/aung/ws/auto_ws/src/autolabor_simulation/lattice_planner/CMakeLists.txt"
+    "last_opened_file_path": "/home/aung/ws/mat-core_ws/src/ros_code"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -387,7 +387,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718439815616</updated>
-      <workItem from="1718439816719" duration="8217000" />
+      <workItem from="1718439816719" duration="8112000" />
     </task>
     <servers />
   </component>
