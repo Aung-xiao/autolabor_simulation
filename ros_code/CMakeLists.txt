@@ -62,6 +62,10 @@ file(GLOB ${PROJECT_NAME}_CPP_SOURCES RELATIVE ${PROJECT_SOURCE_DIR} ${PROJECT_S
 # Declare executable - Node
 add_executable(ros_code
   src/slros_generic_param.cpp
+  src/Global_planner.cpp
+  src/Lattice_planner.cpp
+  src/MPC_controller.cpp
+  src/current_state_convert.cpp
   src/main.cpp
   src/ros_code.cpp
   src/ros_code_data.cpp
@@ -78,7 +82,7 @@ endif()
 target_compile_options(ros_code PUBLIC 
   $<$<OR:$<COMPILE_LANGUAGE:CXX>,$<COMPILE_LANGUAGE:C>>:
   -DMODEL=ros_code
-  -DNUMST=3
+  -DNUMST=4
   -DNCSTATES=0
   -DHAVESTDIO
   -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
@@ -125,4 +129,4 @@ add_custom_command(
                    ARGS -E copy ${PROJECT_SOURCE_DIR}/src/${file_i} ${CATKIN_DEVEL_PREFIX}/ros_code_ert_rtw/${file_i}
 				   )
 endforeach(file_i)
-# Generated on Mon Jun 10 16:04:41 2024
+# Generated on Sat Jun 15 16:22:05 2024

@@ -3,9 +3,9 @@
 //
 // Code generated for Simulink model 'ros_code'.
 //
-// Model version                  : 1.5856
+// Model version                  : 1.5985
 // Simulink Coder version         : 9.7 (R2022a) 13-Nov-2021
-// C/C++ source code generated on : Mon Jun 10 16:04:34 2024
+// C/C++ source code generated on : Sat Jun 15 16:21:52 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Intel->x86-64 (Linux 64)
@@ -326,30 +326,30 @@ struct ros_slroscpp_internal_block_S_T
 #endif                                // struct_ros_slroscpp_internal_block_S_T
 
 // Custom Type definition for MATLAB Function: '<S4>/MPC//solveQuadraticProgramming' 
-#ifndef struct_sEf9458k7RTCGn6XpAY3FSD_ros_c_T
-#define struct_sEf9458k7RTCGn6XpAY3FSD_ros_c_T
+#ifndef struct_sizV6IUWKAiWqwEIFf7P38E_ros_c_T
+#define struct_sizV6IUWKAiWqwEIFf7P38E_ros_c_T
 
-struct sEf9458k7RTCGn6XpAY3FSD_ros_c_T
+struct sizV6IUWKAiWqwEIFf7P38E_ros_c_T
 {
-  real_T xstar[45];
+  real_T xstar[85];
   real_T fstar;
   real_T firstorderopt;
-  real_T lambda[133];
+  real_T lambda[253];
   int32_T state;
   real_T maxConstr;
   int32_T iterations;
-  real_T searchDir[45];
+  real_T searchDir[85];
 };
 
-#endif                                // struct_sEf9458k7RTCGn6XpAY3FSD_ros_c_T
+#endif                                // struct_sizV6IUWKAiWqwEIFf7P38E_ros_c_T
 
-#ifndef struct_scRVBsoAowahmPoAIYa5ea_ros_co_T
-#define struct_scRVBsoAowahmPoAIYa5ea_ros_co_T
+#ifndef struct_smUUAx65r5SQ5CSZDAURIoG_ros_c_T
+#define struct_smUUAx65r5SQ5CSZDAURIoG_ros_c_T
 
-struct scRVBsoAowahmPoAIYa5ea_ros_co_T
+struct smUUAx65r5SQ5CSZDAURIoG_ros_c_T
 {
-  real_T grad[45];
-  real_T Hx[44];
+  real_T grad[85];
+  real_T Hx[84];
   boolean_T hasLinear;
   int32_T nvar;
   int32_T maxVar;
@@ -362,25 +362,25 @@ struct scRVBsoAowahmPoAIYa5ea_ros_co_T
   real_T gammaScalar;
 };
 
-#endif                                // struct_scRVBsoAowahmPoAIYa5ea_ros_co_T
+#endif                                // struct_smUUAx65r5SQ5CSZDAURIoG_ros_c_T
 
-#ifndef struct_svUSr4TrK4x4Kz9rQJTxkkF_ros_c_T
-#define struct_svUSr4TrK4x4Kz9rQJTxkkF_ros_c_T
+#ifndef struct_sFUo2n2eWek74Kh1Ligw2mE_ros_c_T
+#define struct_sFUo2n2eWek74Kh1Ligw2mE_ros_c_T
 
-struct svUSr4TrK4x4Kz9rQJTxkkF_ros_c_T
+struct sFUo2n2eWek74Kh1Ligw2mE_ros_c_T
 {
-  real_T FMat[2025];
+  real_T FMat[7225];
   int32_T ldm;
   int32_T ndims;
   int32_T info;
   real_T scaleFactor;
   boolean_T ConvexCheck;
   real_T regTol_;
-  real_T workspace_[2160];
-  real_T workspace2_[2160];
+  real_T workspace_[4080];
+  real_T workspace2_[4080];
 };
 
-#endif                                // struct_svUSr4TrK4x4Kz9rQJTxkkF_ros_c_T
+#endif                                // struct_sFUo2n2eWek74Kh1Ligw2mE_ros_c_T
 
 #ifndef struct_sL9bDKomAYkxZSVrG9w6En_ros_co_T
 #define struct_sL9bDKomAYkxZSVrG9w6En_ros_co_T
@@ -395,53 +395,40 @@ struct sL9bDKomAYkxZSVrG9w6En_ros_co_T
 
 #endif                                // struct_sL9bDKomAYkxZSVrG9w6En_ros_co_T
 
-#ifndef struct_ros_slroscpp_internal_block_P_T
-#define struct_ros_slroscpp_internal_block_P_T
+#ifndef struct_sxn76bLJrqJiWwjGl8YOqSB_ros_c_T
+#define struct_sxn76bLJrqJiWwjGl8YOqSB_ros_c_T
 
-struct ros_slroscpp_internal_block_P_T
-{
-  boolean_T matlabCodegenIsDeleted;
-  int32_T isInitialized;
-  boolean_T isSetupComplete;
-};
-
-#endif                                // struct_ros_slroscpp_internal_block_P_T
-
-// Custom Type definition for MATLAB Function: '<S4>/MPC//solveQuadraticProgramming' 
-#ifndef struct_siBmBjpOUwoybpuj9rEfGvD_ros_c_T
-#define struct_siBmBjpOUwoybpuj9rEfGvD_ros_c_T
-
-struct siBmBjpOUwoybpuj9rEfGvD_ros_c_T
+struct sxn76bLJrqJiWwjGl8YOqSB_ros_c_T
 {
   int32_T ldq;
-  real_T QR[5985];
-  real_T Q[2025];
-  int32_T jpvt[133];
+  real_T QR[21505];
+  real_T Q[7225];
+  int32_T jpvt[253];
   int32_T mrows;
   int32_T ncols;
-  real_T tau[45];
+  real_T tau[85];
   int32_T minRowCol;
   boolean_T usedPivoting;
 };
 
-#endif                                // struct_siBmBjpOUwoybpuj9rEfGvD_ros_c_T
+#endif                                // struct_sxn76bLJrqJiWwjGl8YOqSB_ros_c_T
 
-#ifndef struct_sg8qKdtlZ7nXgcAC5MP2QHC_ros_c_T
-#define struct_sg8qKdtlZ7nXgcAC5MP2QHC_ros_c_T
+#ifndef struct_sIBsEwkwZMwV16lGx5frI7G_ros_c_T
+#define struct_sIBsEwkwZMwV16lGx5frI7G_ros_c_T
 
-struct sg8qKdtlZ7nXgcAC5MP2QHC_ros_c_T
+struct sIBsEwkwZMwV16lGx5frI7G_ros_c_T
 {
-  real_T workspace_double[5985];
-  int32_T workspace_int[133];
-  int32_T workspace_sort[133];
+  real_T workspace_double[21505];
+  int32_T workspace_int[253];
+  int32_T workspace_sort[253];
 };
 
-#endif                                // struct_sg8qKdtlZ7nXgcAC5MP2QHC_ros_c_T
+#endif                                // struct_sIBsEwkwZMwV16lGx5frI7G_ros_c_T
 
-#ifndef struct_snBUc3P0iDgb4fuyQLszkYC_ros_c_T
-#define struct_snBUc3P0iDgb4fuyQLszkYC_ros_c_T
+#ifndef struct_sU7yup9HkfLOO3uVZruoOBF_ros_c_T
+#define struct_sU7yup9HkfLOO3uVZruoOBF_ros_c_T
 
-struct snBUc3P0iDgb4fuyQLszkYC_ros_c_T
+struct sU7yup9HkfLOO3uVZruoOBF_ros_c_T
 {
   int32_T mConstr;
   int32_T mConstrOrig;
@@ -450,18 +437,18 @@ struct snBUc3P0iDgb4fuyQLszkYC_ros_c_T
   int32_T nVarOrig;
   int32_T nVarMax;
   int32_T ldA;
-  real_T Aineq[1980];
-  real_T bineq[44];
-  real_T lb[45];
-  real_T ub[45];
-  int32_T indexLB[45];
-  int32_T indexUB[45];
-  int32_T indexFixed[45];
+  real_T Aineq[7140];
+  real_T bineq[84];
+  real_T lb[85];
+  real_T ub[85];
+  int32_T indexLB[85];
+  int32_T indexUB[85];
+  int32_T indexFixed[85];
   int32_T mEqRemoved;
-  real_T ATwset[5985];
-  real_T bwset[133];
+  real_T ATwset[21505];
+  real_T bwset[253];
   int32_T nActiveConstr;
-  real_T maxConstrWorkspace[133];
+  real_T maxConstrWorkspace[253];
   int32_T sizes[5];
   int32_T sizesNormal[5];
   int32_T sizesPhaseOne[5];
@@ -472,15 +459,15 @@ struct snBUc3P0iDgb4fuyQLszkYC_ros_c_T
   int32_T isActiveIdxPhaseOne[6];
   int32_T isActiveIdxRegularized[6];
   int32_T isActiveIdxRegPhaseOne[6];
-  boolean_T isActiveConstr[133];
-  int32_T Wid[133];
-  int32_T Wlocalidx[133];
+  boolean_T isActiveConstr[253];
+  int32_T Wid[253];
+  int32_T Wlocalidx[253];
   int32_T nWConstr[5];
   int32_T probType;
   real_T SLACK0;
 };
 
-#endif                                // struct_snBUc3P0iDgb4fuyQLszkYC_ros_c_T
+#endif                                // struct_sU7yup9HkfLOO3uVZruoOBF_ros_c_T
 
 #ifndef struct_sSOeZ9WO10chPn9Si6PKiCB_ros_c_T
 #define struct_sSOeZ9WO10chPn9Si6PKiCB_ros_c_T
@@ -518,6 +505,24 @@ struct sSOeZ9WO10chPn9Si6PKiCB_ros_c_T
 };
 
 #endif                                // struct_sSOeZ9WO10chPn9Si6PKiCB_ros_c_T
+
+#ifndef struct_ros_slroscpp_internal_block_P_T
+#define struct_ros_slroscpp_internal_block_P_T
+
+struct ros_slroscpp_internal_block_P_T
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+};
+
+#endif                                // struct_ros_slroscpp_internal_block_P_T
+
+// Parameters for system: '<Root>/Global_planner'
+typedef struct P_Global_planner_ros_code_T_ P_Global_planner_ros_code_T;
+
+// Parameters for system: '<Root>/Lattice_planner'
+typedef struct P_Lattice_planner_ros_code_T_ P_Lattice_planner_ros_code_T;
 
 // Parameters (default storage)
 typedef struct P_ros_code_T_ P_ros_code_T;

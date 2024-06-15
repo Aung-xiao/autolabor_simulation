@@ -3,9 +3,9 @@
 //
 // Code generated for Simulink model 'ros_code'.
 //
-// Model version                  : 1.5856
+// Model version                  : 1.5985
 // Simulink Coder version         : 9.7 (R2022a) 13-Nov-2021
-// C/C++ source code generated on : Mon Jun 10 16:04:34 2024
+// C/C++ source code generated on : Sat Jun 15 16:21:52 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Intel->x86-64 (Linux 64)
@@ -36,8 +36,10 @@ extern "C" {
   //
   real_T rtGetNaN(void)
   {
-    size_t bitsPerReal = sizeof(real_T) * (NumBitsPerChar);
-    real_T nan = 0.0;
+    size_t bitsPerReal{ sizeof(real_T) * (NumBitsPerChar) };
+
+    real_T nan{ 0.0 };
+
     if (bitsPerReal == 32U) {
       nan = rtGetNaNF();
     } else {
@@ -60,7 +62,7 @@ extern "C" {
   //
   real32_T rtGetNaNF(void)
   {
-    IEEESingle nanF = { { 0.0F } };
+    IEEESingle nanF{ { 0.0F } };
 
     nanF.wordL.wordLuint = 0xFFC00000U;
     return nanF.wordL.wordLreal;
