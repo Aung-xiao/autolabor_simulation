@@ -1,4 +1,4 @@
 <launch>
-  <rosparam command="load" file="$(find ros_code)/param/FMPC.yaml"/>
+  <rosparam command="load" file="$(find lattice_planner)/param/FMPC.yaml"/>
   <node name="ros_code" pkg="ros_code" type="ros_code" output="screen"/>
 </launch>
