@@ -1,7 +1,7 @@
 ros_code:
 #  sample_param
-  T_max: 4.0
-  T_min: 2.0
+  T_max: 6.0
+  T_min: 4.0
   t_step: 0.1
   L_max: 1.5
   L_min: -1.5
@@ -19,13 +19,13 @@ ros_code:
   dds_threshold: 4.9 # 0.5*9.8
   dls_threshold: 1.05  #pi/3
   max_object_distance: 6.0
-  expansion_coeff: 2.0
+  expansion_coeff: 4.0
 
 #  path_cost_param
   ds_cost: 0.2
-  l_cost: 1.5
+  l_cost: 2.0
   t_cost: 0.1
-  object_cost: 2.0
+  object_cost: 1.0
   dds_cost: 1.0
   ddls_cost: 1.0
 
