@@ -12,13 +12,13 @@
     <param name="base_link_frame" value="base_link"/>
     <param name="real_map_frame" value="real_map"/>
 
-    <param name="noise_v_linear" value="0.1"/>
-    <param name="noise_v_theta" value="0.1"/>
+    <param name="noise_v_linear" value="0.0"/>
+    <param name="noise_v_theta" value="0.0"/>
 
     <param name="max_a_linear" value="999.0"/>
     <param name="max_a_theta" value="999.0"/>
 
-    <param name="max_v_linear" value="1.0"/>
+    <param name="max_v_linear" value="2.0"/>
     <param name="max_v_theta" value="1.57"/>
 
     <param name="rate" value="100"/>
@@ -110,9 +110,9 @@
     <arg name="position_x" value="4.0" />
     <arg name="position_y" value="0.0" />
     <arg name="position_z" value="0.0" />
-    <arg name="scale_x" value="0.8" />
-    <arg name="scale_y" value="0.8" />
-    <arg name="scale_z" value="0.8" />
+    <arg name="scale_x" value="0.5" />
+    <arg name="scale_y" value="0.5" />
+    <arg name="scale_z" value="0.5" />
   </include>
 
   <include file="$(find lattice_planner)/launch/matlab_core.launch"/>
