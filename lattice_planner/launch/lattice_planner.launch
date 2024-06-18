@@ -107,7 +107,7 @@
   </include>
 
   <include file="$(find lattice_planner)/launch/fake_obstacle.launch">
-    <arg name="position_x" value="4.0" />
+    <arg name="position_x" value="3.0" />
     <arg name="position_y" value="0.0" />
     <arg name="position_z" value="0.0" />
     <arg name="scale_x" value="0.5" />
