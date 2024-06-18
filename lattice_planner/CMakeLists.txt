@@ -8,6 +8,8 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   visualization_msgs
   message_generation
+  tf2_ros
+  tf2_geometry_msgs
 )
 
 
@@ -40,6 +42,13 @@ add_executable(fake_obstacle_publisher
         src/fake_obstacle_publisher.cpp
         )
 target_link_libraries(fake_obstacle_publisher
+        ${catkin_LIBRARIES}
+        )
+
+add_executable(odom_publisher
+        src/odom_publisher.cpp)
+
+target_link_libraries(odom_publisher
         ${catkin_LIBRARIES}
         )
 

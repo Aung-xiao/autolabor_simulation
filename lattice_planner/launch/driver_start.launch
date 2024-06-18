@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find autolabor_pro1_driver)/launch/driver.launch"/>
+    <include file="$(find lslidar_driver)/launch/lslidar_c16.launch"/>
+    <include file="$(find aloam_velodyne)/launch/aloam_velodyne_VLP_16.launch"/>
+</launch>

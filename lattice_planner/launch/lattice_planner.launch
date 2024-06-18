@@ -98,6 +98,10 @@
     <remap from="scan" to="$(arg scan_topic)"/>
   </node>
 
+<!--  <node pkg="tf2_ros" type="static_transform_publisher" name="link_camera_init_to_real_map"-->
+<!--        args="0 0 0 0 0 0 1 real_map camera_init" />-->
+<!--  <include file="$(find lattice_planner)/launch/odom_pub.launch"/>-->
+
   <include file="$(find lattice_planner)/launch/simple_path_planner.launch">
     <arg name="global_path_topic" value="/global_path" />
     <arg name="goal_topic" value="/move_base_simple/goal" />
